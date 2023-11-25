@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../database/database.service';
-import { Participant } from '../../dtos/participants';
+import { Participant } from '../../dtos/participants.dto';
 
 @Injectable()
 export class InsertRangeParticipantsService {

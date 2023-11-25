@@ -11,7 +11,13 @@ datasource db {
 }
 
 model Participant {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   familyLeader String
+  personDrawn  String?
+  wasDrawn     Boolean @default(false)
+
+  giftSuggestion1 String?
+  giftSuggestion2 String?
+  giftSuggestion3 String?
 }

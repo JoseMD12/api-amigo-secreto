@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { InsertRangeParticipantsService } from '../providers/insert-range-participants.service';
-import { Participant } from '../../dtos/participants';
+import { Participant } from '../../dtos/participants.dto';
 
 @Controller('/participant')
 export class InsertRangeParticipantsController {
