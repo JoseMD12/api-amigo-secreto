@@ -16,10 +16,6 @@ export class DrawnParticipantService {
       throw new Error('Participant not found');
     }
 
-    if (participant.personDrawn) {
-      return participant.personDrawn;
-    }
-
     const allParticipants = await this.database.participant.findMany({
       where: {
         name: {
@@ -28,9 +24,16 @@ export class DrawnParticipantService {
         familyLeader: {
           not: participant.familyLeader,
         },
-        wasDrawn: false,
       },
     });
+
+    if (participant.personDrawn) {
+      const alreadyDrawnParticipant = allParticipants.find(
+        (p) => p.name === participant.personDrawn,
+      );
+
+      return alreadyDrawnParticipant;
+    }
 
     const drawnIndex = Math.floor(Math.random() * allParticipants.length);
     const drawnParticipant = allParticipants[drawnIndex];
