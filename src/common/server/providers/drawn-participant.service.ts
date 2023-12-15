@@ -17,7 +17,7 @@ export class DrawnParticipantService {
     }
 
     if (participant.personDrawn) {
-      throw new Error('Participant already drawn');
+      return participant.personDrawn;
     }
 
     const allParticipants = await this.database.participant.findMany({
